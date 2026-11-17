@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="Tu ficha de emergencia. Se guarda solo en tu celular.">
+  <title>Ficha de emergencia · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Mesa 2,3 · Ficha de emergencia -->
+  <main class="ficha">
+    <header class="ficha__encabezado">
+      <img class="ficha__curva" src="img/ficha-encabezado.svg" width="444" height="171" alt="">
+      <h1 class="ficha__titulo">Ficha de emergencia</h1>
+    </header>
+
+    <div class="ficha__foto">
+      <img class="ficha__foto-circulo" src="img/ficha-avatar-circulo.svg" width="144.6" height="144.6" alt="">
+      <img class="ficha__foto-icono" id="foto-icono" src="img/icono-usuario.png" width="72" height="72" alt="">
+      <img class="ficha__foto-imagen" id="foto-imagen" alt="Tu foto" hidden>
+      <label class="ficha__editar" for="foto-archivo">
+        <img src="img/ficha-editar-fondo.svg" width="51" height="26" alt="">
+        <span>Editar</span>
+        <span class="solo-lectores"> foto</span>
+      </label>
+      <input class="solo-lectores" id="foto-archivo" type="file" accept="image/*">
+    </div>
+
+    <form class="ficha__formulario" id="formulario" novalidate>
+      <div class="ficha__campo">
+        <label for="nombre">Nombre completo</label>
+        <input id="nombre" name="nombre" type="text" autocomplete="name" aria-describedby="error-nombre">
+        <p class="ficha__error" id="error-nombre" role="alert"></p>
+      </div>
+      <div class="ficha__campo">
+        <label for="sangre">Tipo de sangre y RH</label>
+        <input id="sangre" name="sangre" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="alergias">Alergias (si tiene)</label>
+        <input id="alergias" name="alergias" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="medicamentos">Medicamentos que toma (si tiene)</label>
+        <input id="medicamentos" name="medicamentos" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="eps">EPS o seguro médico</label>
+        <input id="eps" name="eps" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="encuentro">Punto de encuentro</label>
+        <input id="encuentro" name="encuentro" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="contacto">Contacto de emergencia (nombre + teléfono)</label>
+        <input id="contacto" name="contacto" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="alterno">Contacto alterno / fuera de la ciudad <br>(nombre + teléfono)</label>
+        <input id="alterno" name="alterno" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="mascotas">Mascotas — nombre, raza, color, si tiene <br>placa o no</label>
+        <input id="mascotas" name="mascotas" type="text" autocomplete="off">
+      </div>
+      <div class="ficha__campo">
+        <label for="adicional">Información adicional</label>
+        <textarea id="adicional" name="adicional" rows="4"></textarea>
+      </div>
+
+      <div class="ficha__aviso">
+        <p>Esta información se guarda solo en tu celular. <br>Se usa solo para generar tu ficha impresa <br>— tú decides quién la ve.</p>
+        <button class="ficha__confirmar" type="submit">
+          <img src="img/ficha-confirmar-circulo.svg" width="15" height="15" alt="">
+          <span>Confirmar</span>
+        </button>
+      </div>
+    </form>
+  </main>
+
+  <script src="js/registro-sw.js"></script>
+  <script src="js/confirmacion.js"></script>
+  <script src="js/ficha-datos.js"></script>
+  <script src="js/ficha.js"></script>
+</body>
+</html>

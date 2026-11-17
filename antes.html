@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="Qué hacer antes de un sismo: kit, dónde protegerte, tu ficha, el mapa y las líneas de emergencia.">
+  <title>Antes · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Mesa 3,1 · Antes -->
+  <main class="antes">
+    <header class="antes__encabezado">
+      <img class="antes__curva" src="img/antes-encabezado.svg" width="444" height="285" alt="">
+      <img class="antes__isotipo" src="img/isotipo-acoge.png" width="44" height="49" alt="">
+      <h1 class="antes__titulo">Antes</h1>
+    </header>
+
+    <nav class="antes__menu" aria-label="Antes de un sismo">
+      <div class="antes__fila antes__fila--izq">
+        <a class="boton-antes" href="que-hacer.html">Qué hacer</a>
+        <img src="img/antes/menu-que-hacer.png" width="63" height="59" alt="">
+      </div>
+      <div class="antes__fila antes__fila--der">
+        <img src="img/antes/menu-kit.png" width="68" height="60" alt="">
+        <a class="boton-antes" href="kit.html">Mi kit</a>
+      </div>
+      <div class="antes__fila antes__fila--izq">
+        <a class="boton-antes boton-antes--pequeno" href="protegerme.html">Dónde <br>protegerme <br>en casa</a>
+        <img src="img/antes/menu-protegerme.png" width="61" height="60" alt="">
+      </div>
+      <div class="antes__fila antes__fila--der">
+        <img src="img/antes/menu-ficha.png" width="57" height="59" alt="">
+        <a class="boton-antes boton-antes--pequeno" href="mi-ficha.html">Mi ficha de <br>emergencia</a>
+      </div>
+      <div class="antes__fila antes__fila--izq">
+        <a class="boton-antes boton-antes--pequeno" href="mapa.html">Mapa de <br>mi zona</a>
+        <img src="img/antes/menu-mapa.png" width="57" height="57" alt="">
+      </div>
+      <div class="antes__fila antes__fila--der">
+        <img src="img/antes/menu-lineas.png" width="66" height="61" alt="">
+        <a class="boton-antes boton-antes--pequeno" href="ayuda.html">Líneas de <br>emergencia</a>
+      </div>
+    </nav>
+  </main>
+
+  <!-- Barra inferior: inicio, ficha, mapa y líneas de emergencia -->
+  <nav class="barra-inferior barra-inferior--blanca" aria-label="Accesos rápidos">
+    <div class="barra-inferior__grupo barra-inferior__grupo--cuatro">
+      <a class="barra-inferior__enlace barra-inferior__enlace--inicio" href="inicio.html" aria-label="Inicio">
+        <img src="img/nav-inicio.png" width="36" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--ficha" href="mi-ficha.html" aria-label="Mi ficha de emergencia">
+        <img src="img/nav-ficha.png" width="35" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--mapa" href="mapa.html" aria-label="Mapa de mi zona">
+        <img src="img/nav-mapa.png" width="38" height="38" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--lineas" href="ayuda.html" aria-label="Líneas de emergencia">
+        <img src="img/nav-lineas.png" width="43" height="40" alt="">
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/registro-sw.js"></script>
+  <script src="js/botones.js"></script>
+</body>
+</html>

@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="Activa las notificaciones, la ubicación y llena tu ficha de emergencia.">
+  <title>Permisos · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Mesa 2 · Permisos (única vez, al instalar) -->
+  <main class="permisos">
+    <img class="permisos__isotipo" src="img/isotipo-acoge-vino.png" width="105" height="115" alt="ACOGE">
+    <h1 class="solo-lectores">Antes de empezar</h1>
+
+    <section class="permisos__item">
+      <p class="instalar__nota" id="nota-notificaciones">Te avisamos cuando haya un sismo reportado. Puedes cambiarlo después.</p>
+      <button class="boton-blanco boton-blanco--ancho" id="boton-notificaciones" type="button" aria-describedby="nota-notificaciones">
+        <span class="boton-blanco__texto">Activar notificaciones</span>
+      </button>
+      <p class="permisos__mensaje" id="mensaje-notificaciones" role="status"></p>
+    </section>
+
+    <section class="permisos__item">
+      <p class="instalar__nota" id="nota-ubicacion">La usamos para mostrar lo que hay cerca de ti. No se comparte con nadie.</p>
+      <button class="boton-blanco boton-blanco--ancho" id="boton-ubicacion" type="button" aria-describedby="nota-ubicacion">
+        <span class="boton-blanco__texto">Confirmación Ubicación</span>
+      </button>
+      <p class="permisos__mensaje" id="mensaje-ubicacion" role="status"></p>
+    </section>
+
+    <section class="permisos__item">
+      <p class="instalar__nota" id="nota-ficha">Tus datos de emergencia se guardan solo en tu celular.</p>
+      <a class="boton-blanco boton-blanco--ancho" id="boton-ficha" href="ficha.html?volver=permisos.html" aria-describedby="nota-ficha">
+        <span class="boton-blanco__texto">Llenar ficha de emergencia</span>
+      </a>
+    </section>
+
+    <!-- data-siguiente: pantalla que sigue -->
+    <button class="permisos__continuar" id="continuar" type="button" data-siguiente="descargar.html">Continuar</button>
+  </main>
+
+  <script src="js/registro-sw.js"></script>
+  <script src="js/confirmacion.js"></script>
+  <script src="js/permisos.js"></script>
+</body>
+</html>

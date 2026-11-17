@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="Tu ficha de emergencia. Se guarda solo en tu celular.">
+  <title>Mi ficha de emergencia · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pantalla-blanca">
+
+  <!-- Mesa 3,1-4 · Mi ficha de emergencia (editable) -->
+  <main class="seccion mi-ficha">
+    <header class="seccion__encabezado">
+      <img class="seccion__isotipo" src="img/isotipo-acoge-vino.png" width="45" height="49" alt="">
+      <h1 class="seccion__titulo"><span class="seccion__titulo-1">Mi Ficha</span><span class="seccion__titulo-2">de emergencia</span></h1>
+    </header>
+
+    <form class="mi-ficha__tarjeta" id="mi-ficha" autocomplete="off" novalidate>
+      <label class="solo-lectores" for="mf-nombre">Nombre completo</label>
+      <input class="mi-ficha__nombre" id="mf-nombre" name="nombre" type="text" placeholder="Nombres y Apellidos" autocomplete="name">
+
+      <div class="mi-ficha__fila">
+        <label for="mf-sangre">Tipo de sangre y RH</label>
+        <input id="mf-sangre" name="sangre" type="text" placeholder="O+">
+      </div>
+      <div class="mi-ficha__fila">
+        <label for="mf-alergias">Alergias</label>
+        <input id="mf-alergias" name="alergias" type="text" placeholder="Sí/No">
+      </div>
+      <div class="mi-ficha__fila">
+        <label for="mf-medicamentos">Medicamentos <br>que toma</label>
+        <input id="mf-medicamentos" name="medicamentos" type="text" placeholder="ABECLIN 2 mg Comp.">
+      </div>
+      <div class="mi-ficha__fila">
+        <label for="mf-eps">EPS o seguro médico</label>
+        <input id="mf-eps" name="eps" type="text" placeholder="Sanitas">
+      </div>
+      <div class="mi-ficha__fila">
+        <label for="mf-encuentro">Punto de encuentro</label>
+        <input id="mf-encuentro" name="encuentro" type="text" placeholder="calle 0 # 00-00">
+      </div>
+
+      <fieldset class="mi-ficha__fila mi-ficha__fila--doble">
+        <legend>Contacto de emergencia</legend>
+        <div class="mi-ficha__par">
+          <input name="contactoNombre" type="text" placeholder="Nombres y Apellidos" aria-label="Nombre del contacto de emergencia">
+          <span class="mi-ficha__tel"><span aria-hidden="true">Tel:</span>
+            <input name="contactoTel" type="tel" inputmode="tel" placeholder="3000000000" aria-label="Teléfono del contacto de emergencia"></span>
+        </div>
+      </fieldset>
+      <fieldset class="mi-ficha__fila mi-ficha__fila--doble">
+        <legend>Contacto alterno</legend>
+        <div class="mi-ficha__par">
+          <input name="alternoNombre" type="text" placeholder="Nombres y Apellidos" aria-label="Nombre del contacto alterno">
+          <span class="mi-ficha__tel"><span aria-hidden="true">Tel:</span>
+            <input name="alternoTel" type="tel" inputmode="tel" placeholder="3000000000" aria-label="Teléfono del contacto alterno"></span>
+        </div>
+      </fieldset>
+      <fieldset class="mi-ficha__fila mi-ficha__fila--doble">
+        <legend>Mascotas — nombre, especie, raza, color</legend>
+        <div class="mi-ficha__par">
+          <input name="mascotaNombre" type="text" placeholder="Bigotes" aria-label="Nombre de la mascota">
+          <input name="mascotaRaza" type="text" placeholder="Criollo" aria-label="Raza de la mascota">
+        </div>
+        <div class="mi-ficha__par">
+          <input name="mascotaEspecie" type="text" placeholder="Gato" aria-label="Especie de la mascota">
+          <input name="mascotaColor" type="text" placeholder="Negro" aria-label="Color de la mascota">
+        </div>
+      </fieldset>
+      <div class="mi-ficha__fila mi-ficha__fila--ultima">
+        <label for="mf-adicional">Información adicional</label>
+        <textarea id="mf-adicional" name="adicional" rows="1" placeholder="Uso lentes, tengo marcapasos…"></textarea>
+      </div>
+    </form>
+
+    <p class="mi-ficha__aviso">Toca cualquier dato para cambiarlo. Los cambios se guardan solos, solo en tu celular.</p>
+    <p class="solo-lectores" id="mf-estado" role="status"></p>
+  </main>
+
+  <!-- Barra inferior: inicio, ficha, mapa y líneas de emergencia -->
+  <nav class="barra-inferior barra-inferior--blanca" aria-label="Accesos rápidos">
+    <div class="barra-inferior__grupo barra-inferior__grupo--cuatro">
+      <a class="barra-inferior__enlace barra-inferior__enlace--inicio" href="inicio.html" aria-label="Inicio">
+        <img src="img/nav-inicio.png" width="36" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--ficha" href="mi-ficha.html" aria-label="Mi ficha de emergencia" aria-current="page">
+        <img src="img/nav-ficha.png" width="35" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--mapa" href="mapa.html" aria-label="Mapa de mi zona">
+        <img src="img/nav-mapa.png" width="38" height="38" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--lineas" href="ayuda.html" aria-label="Líneas de emergencia">
+        <img src="img/nav-lineas.png" width="43" height="40" alt="">
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/registro-sw.js"></script>
+  <script src="js/ficha-datos.js"></script>
+  <script src="js/mi-ficha.js"></script>
+</body>
+</html>

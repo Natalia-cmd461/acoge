@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="Elige cómo es tu construcción para saber dónde protegerte.">
+  <title>¿Cómo es mi casa o edificio? · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pantalla-blanca">
+
+  <!-- Mesa 3,1-3,1 · ¿Cómo es mi casa o edificio? -->
+  <main class="seccion casa">
+    <img class="casa__curva" src="img/casa-encabezado.svg" width="440" height="352" alt="">
+    <header class="seccion__encabezado">
+      <img class="seccion__isotipo" src="img/isotipo-acoge-vino.png" width="45" height="49" alt="">
+      <h1 class="seccion__titulo"><span class="seccion__titulo-1">¿Cómo es</span><span class="seccion__titulo-2">mi casa o edificio?</span></h1>
+    </header>
+
+    <p class="casa__intro">Dónde protegerte cambia según cómo se construyó. Elige lo que más se parezca.</p>
+
+    <div class="casa__opciones">
+      <button class="boton-antes boton-antes--protegerme" type="button" data-abre="capa-sismorresistente">Sismorresistente</button>
+      <button class="boton-antes boton-antes--protegerme" type="button" data-abre="capa-no-sismorresistente">No <br>sismorresistente</button>
+      <button class="boton-antes boton-antes--protegerme" type="button" data-abre="capa-no-se">No sé</button>
+    </div>
+
+    <section class="casa__averiguar" aria-labelledby="titulo-averiguar">
+      <h2 id="titulo-averiguar">¿Cómo averiguarlo?</h2>
+      <ul>
+        <li>Preguntar en la administración del edificio o conjunto. La guía sugiere consultar los planes de emergencia de la propiedad horizontal.</li>
+        <li>Mirar el año de construcción: el primer código de construcciones sismorresistentes en Colombia se adoptó en 1984 y hoy rige la NSR-10.</li>
+      </ul>
+      <a class="casa__guia" href="https://www.valoraanalitik.com/wp-content/uploads/2026/08/Guia-sismos-digital-f-5-2.pdf" target="_blank" rel="noopener">Guía UNGRD<span class="solo-lectores"> (se abre en otra pestaña)</span></a>
+    </section>
+  </main>
+
+  <div class="superposicion" id="capa-sismorresistente" role="dialog" aria-modal="true" aria-labelledby="capa-sismorresistente-texto" hidden>
+    <div class="superposicion__tarjeta" tabindex="-1">
+      <div class="superposicion__pictos" style="gap:16px">
+        <img src="img/pictogramas/columnas.png" width="129" height="114" alt="Persona agachada junto a una columna.">
+        <img src="img/pictogramas/mesas.png" width="175" height="114" alt="Persona agachada bajo una mesa.">
+      </div>
+      <p class="superposicion__texto" id="capa-sismorresistente-texto">Ubícate junto a una columna o bajo un mueble macizo, lejos de ventanas y de objetos que puedan caer.</p>
+      <button class="superposicion__volver" type="button">Volver</button>
+    </div>
+  </div>
+  <div class="superposicion" id="capa-no-sismorresistente" role="dialog" aria-modal="true" aria-labelledby="capa-no-sismorresistente-texto" hidden>
+    <div class="superposicion__tarjeta" tabindex="-1">
+      <div class="superposicion__pictos" style="gap:18px">
+        <img src="img/antes/mueble.png" width="135" height="105" alt="Mueble macizo.">
+        <img src="img/pictogramas/mesas.png" width="175" height="114" alt="Persona agachada bajo una mesa.">
+      </div>
+      <p class="superposicion__texto" id="capa-no-sismorresistente-texto">Ubícate bajo un mueble macizo: sofá grande, cama maciza, comedor o escritorio fuerte.</p>
+      <button class="superposicion__volver" type="button">Volver</button>
+    </div>
+  </div>
+  <div class="superposicion" id="capa-no-se" role="dialog" aria-modal="true" aria-labelledby="capa-no-se-texto" hidden>
+    <div class="superposicion__tarjeta" tabindex="-1">
+      <div class="superposicion__pictos" style="gap:10px">
+        <img src="img/pictogramas/fetal.png" width="134" height="67" alt="Persona en posición de seguridad en el piso.">
+        <img src="img/pictogramas/mesas.png" width="175" height="114" alt="Persona agachada bajo una mesa.">
+      </div>
+      <p class="superposicion__texto" id="capa-no-se-texto">Mientras averiguas, protégete bajo una mesa o escritorio resistente, lejos de ventanas. Si no hay, cubre cabeza y cuello con los brazos y aléjate de vidrios, muebles altos y lámparas.</p>
+      <button class="superposicion__volver" type="button">Volver</button>
+    </div>
+  </div>
+
+  <!-- Barra inferior: inicio, ficha, mapa y líneas de emergencia -->
+  <nav class="barra-inferior barra-inferior--blanca" aria-label="Accesos rápidos">
+    <div class="barra-inferior__grupo barra-inferior__grupo--cuatro">
+      <a class="barra-inferior__enlace barra-inferior__enlace--inicio" href="inicio.html" aria-label="Inicio">
+        <img src="img/nav-inicio.png" width="36" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--ficha" href="mi-ficha.html" aria-label="Mi ficha de emergencia">
+        <img src="img/nav-ficha.png" width="35" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--mapa" href="mapa.html" aria-label="Mapa de mi zona">
+        <img src="img/nav-mapa.png" width="38" height="38" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--lineas" href="ayuda.html" aria-label="Líneas de emergencia">
+        <img src="img/nav-lineas.png" width="43" height="40" alt="">
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/registro-sw.js"></script>
+  <script src="js/botones.js"></script>
+  <script src="js/casa.js"></script>
+</body>
+</html>

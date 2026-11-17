@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="ACOGE: qué hacer antes, durante y después de un sismo.">
+  <title>Inicio · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body class="pantalla-vino">
+
+  <!-- Mesa 3 · Inicio (sin alertas) y mesa 4 · Inicio (alerta activa).
+       Simulacro: 5 toques seguidos en el logo cambian entre los dos estados. -->
+  <main class="inicio" id="inicio">
+    <section class="inicio__tarjeta">
+      <img class="inicio__tarjeta-forma" src="img/inicio-tarjeta.svg" width="465.6" height="570.6" alt="">
+      <h1 class="inicio__titulo" id="titulo-normal">Sin alertas <br>reportadas</h1>
+      <h1 class="inicio__titulo inicio__titulo--alerta" id="titulo-alerta" hidden>
+        <span class="inicio__titulo-1">Alerta</span> <span class="inicio__titulo-2">ACTIVA</span>
+      </h1>
+      <button class="inicio__entendido" id="entendido" type="button" hidden aria-label="Entendido: silenciar el sonido y la vibración">Entendido</button>
+      <img class="inicio__isotipo" id="logo" src="img/isotipo-acoge-vino.png" width="88" height="97" alt="ACOGE" draggable="false">
+    </section>
+
+    <!-- Alerta activa: un solo botón que lleva a Durante -->
+    <a class="inicio__ahora" id="ahora" href="durante.html" hidden>
+      <img src="img/alerta/boton.svg" width="197" height="100" alt="">
+      <span>Qué hacer <br>ahora</span>
+    </a>
+
+    <nav class="inicio__fases" id="fases" aria-label="Momentos del sismo">
+      <!-- data-destino: se llena cuando exista cada sección -->
+      <button class="inicio__fase" type="button" data-destino="antes.html">
+        <img src="img/inicio-boton.svg" width="123" height="64" alt="">
+        <span>Antes</span>
+      </button>
+      <button class="inicio__fase" type="button" data-destino="durante.html">
+        <img src="img/inicio-boton.svg" width="123" height="64" alt="">
+        <span>Durante</span>
+      </button>
+      <button class="inicio__fase" type="button" data-destino="despues.html">
+        <img src="img/inicio-boton.svg" width="123" height="64" alt="">
+        <span>Después</span>
+      </button>
+    </nav>
+
+    <div class="inicio__datos">
+      <p id="fecha">Última actualización</p>
+      <p id="fuente"></p>
+      <p id="estado" role="status"></p>
+      <p id="avisos"></p>
+      <p class="solo-lectores" id="anuncio" role="alert"></p>
+    </div>
+
+    <a class="inicio__instagram" href="https://www.instagram.com/acoge.co" target="_blank" rel="noopener" aria-label="Instagram de ACOGE (se abre en otra pestaña)">
+      <img src="img/icono-instagram.png" width="41" height="41" alt="">
+    </a>
+  </main>
+
+  <!-- Barra inferior: ficha, mapa y líneas de emergencia siempre en el mismo lugar -->
+  <nav class="barra-inferior" aria-label="Accesos rápidos">
+    <div class="barra-inferior__grupo">
+      <a class="barra-inferior__enlace barra-inferior__enlace--ficha" href="mi-ficha.html" aria-label="Mi ficha de emergencia">
+        <img src="img/nav-ficha.png" width="35" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--mapa" href="mapa.html" aria-label="Mapa de mi zona">
+        <img src="img/nav-mapa.png" width="38" height="38" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--lineas" href="ayuda.html" aria-label="Líneas de emergencia">
+        <img src="img/nav-lineas.png" width="43" height="40" alt="">
+      </a>
+    </div>
+  </nav>
+
+  <!-- Sonido de la alerta: se repite hasta tocar «Entendido» -->
+  <audio id="sonido-alerta" src="sonidos/sonido-de-alerta.mp3" preload="auto" loop></audio>
+
+  <script src="js/contenido.js"></script>
+  <script src="js/registro-sw.js"></script>
+  <script src="js/inicio.js"></script>
+</body>
+</html>

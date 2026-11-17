@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="Qué hacer después de un sismo, dónde buscar ayuda y portales oficiales.">
+  <title>Después · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700;800&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Mesa 3,3 · Después (menú) -->
+  <main class="antes despues">
+    <header class="antes__encabezado">
+      <img class="antes__curva" src="img/antes-encabezado.svg" width="444" height="285" alt="">
+      <img class="antes__isotipo despues__isotipo" src="img/isotipo-acoge.png" width="44" height="49" alt="">
+      <h1 class="antes__titulo despues__titulo">Después</h1>
+    </header>
+
+    <nav class="despues__menu" aria-label="Después de un sismo">
+      <a class="boton-antes boton-antes--grande" href="que-hacer-despues.html">Qué hacer <br>luego del sismo</a>
+      <a class="boton-antes boton-antes--grande" href="ayuda.html">Dónde buscar <br>ayuda</a>
+      <a class="boton-antes boton-antes--grande" href="portales.html">Portales oficiales <br>de ayuda</a>
+    </nav>
+  </main>
+
+  <!-- Barra inferior: inicio, ficha, mapa y líneas de emergencia -->
+  <nav class="barra-inferior barra-inferior--blanca" aria-label="Accesos rápidos">
+    <div class="barra-inferior__grupo barra-inferior__grupo--cuatro">
+      <a class="barra-inferior__enlace barra-inferior__enlace--inicio" href="inicio.html" aria-label="Inicio">
+        <img src="img/nav-inicio.png" width="36" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--ficha" href="mi-ficha.html" aria-label="Mi ficha de emergencia">
+        <img src="img/nav-ficha.png" width="35" height="36" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--mapa" href="mapa.html" aria-label="Mapa de mi zona">
+        <img src="img/nav-mapa.png" width="38" height="38" alt="">
+      </a>
+      <a class="barra-inferior__enlace barra-inferior__enlace--lineas" href="ayuda.html" aria-label="Líneas de emergencia">
+        <img src="img/nav-lineas.png" width="43" height="40" alt="">
+      </a>
+    </div>
+  </nav>
+
+  <script src="js/registro-sw.js"></script>
+  <script src="js/botones.js"></script>
+</body>
+</html>

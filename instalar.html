@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#7A3040">
+  <meta name="description" content="Instala ACOGE en tu celular.">
+  <title>Instalar · ACOGE</title>
+
+  <link rel="icon" href="img/iconos/icono-192.png" type="image/png">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="img/iconos/apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Karla:wght@400;500;700&family=Young+Serif&display=swap">
+
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+
+  <!-- Pantalla B · Instalar (se ofrece en cada apertura hasta que se instale) -->
+  <main class="instalar">
+    <h1 class="instalar__titulo">Instala acoge en tu celular</h1>
+
+    <!-- Android y otros navegadores compatibles -->
+    <div class="instalar__grupo" id="grupo-android">
+      <p class="instalar__nota">Si usas Android, presiona <strong>instalar</strong></p>
+      <button class="boton-blanco instalar__boton-instalar" id="instalar" type="button">Instalar</button>
+      <p class="instalar__nota instalar__estado" id="estado" role="status"></p>
+    </div>
+
+    <!-- iPhone y iPad: Apple solo permite instalar desde el menú Compartir -->
+    <div class="instalar__grupo instalar__grupo--ios" id="grupo-ios">
+      <p class="instalar__nota">Si usas iOS, toca <strong>Compartir</strong> y luego <strong>Agregar a pantalla de inicio</strong></p>
+      <p class="instalar__nota">En iPhone, las notificaciones solo funcionan si la instalas así.</p>
+    </div>
+
+    <button class="boton-blanco instalar__boton-ahora-no" id="ahora-no" type="button">Ahora no</button>
+  </main>
+
+  <script src="js/registro-sw.js"></script>
+  <script src="js/instalar.js"></script>
+</body>
+</html>
