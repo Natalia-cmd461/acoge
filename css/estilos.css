@@ -1,0 +1,2851 @@
+/* =========================================================
+   ACOGE — estilos base
+   Paleta y tipografías del sistema visual (brief, sección 6)
+   ========================================================= */
+
+:root {
+  /* Paleta */
+  --vino:  #7A3040;   /* advertencia / lo que no se debe hacer */
+  --tinta: #241C1E;
+  --papel: #F5F1EA;
+  --verde: #2E4F45;   /* lo que sí se debe hacer / confirmación */
+  --blanco: #FFFFFF;
+
+  /* Tipografías */
+  --fuente-titulo: "Young Serif", Georgia, "Times New Roman", serif;
+  --fuente-texto:  "Karla", system-ui, -apple-system, "Segoe UI", sans-serif;
+
+  /* Sombras del diseño */
+  --sombra-texto: 0 4px 4px rgba(0, 0, 0, 0.15);
+  --sombra-isotipo: drop-shadow(0 4px 7px rgba(0, 0, 0, 0.15));
+
+  /* Ancho de la mesa de trabajo en Figma */
+  --ancho-app: 440px;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  min-height: 100dvh;
+  font-family: var(--fuente-texto);
+  color: var(--tinta);
+  background: var(--papel);
+}
+
+body.pantalla-vino {
+  background: var(--vino);
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+/* =========================================================
+   Mesa 1 · Splash
+   Medidas de Figma (440 × 956):
+   isotipo 201 × 221 en y = 192 · «acoge» 120 px en y = 392
+   lema 16 px, ancho 254, centrado en y = 696
+   ========================================================= */
+
+.splash {
+  position: relative;
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 0 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: var(--vino);
+  color: var(--papel);
+  text-align: center;
+  /* el conjunto queda un poco por encima del centro, como en Figma */
+  padding-bottom: 5.2vh;
+}
+
+.splash__marca {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.splash__isotipo {
+  width: 201px;
+  height: auto;
+  filter: var(--sombra-isotipo);
+}
+
+.splash__nombre {
+  margin: 0;
+  /* en Figma la caja de texto se monta 21 px sobre el isotipo */
+  margin-top: -21px;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: min(120px, 30vw); /* 120 px como en Figma; se reduce en celulares muy angostos */
+  line-height: 1.55;         /* ≈ 186 px de alto, como la caja en Figma */
+  letter-spacing: 0;
+  color: var(--papel);
+  text-shadow: var(--sombra-texto);
+}
+
+.splash__lema {
+  margin: 100px 0 0;          /* distancia entre «acoge» y el lema en Figma */
+  max-width: 254px;
+  font-family: var(--fuente-texto);
+  font-size: 1rem;            /* 16 px, ampliable (WCAG 1.4.4) */
+  line-height: 1.14;
+  color: var(--blanco);
+  text-wrap: pretty;
+}
+
+/* Iniciales que forman la sigla A-C-O-G-E */
+.splash__lema .inicial {
+  font-family: var(--fuente-titulo);
+}
+
+/* Entrada suave; nada parpadea (WCAG 2.3.1) */
+@media (prefers-reduced-motion: no-preference) {
+  .splash__marca,
+  .splash__lema {
+    animation: aparecer 700ms ease-out both;
+  }
+  .splash__lema {
+    animation-delay: 250ms;
+  }
+  .splash.saliendo {
+    transition: opacity 400ms ease-in;
+    opacity: 0;
+  }
+}
+
+@keyframes aparecer {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+/* Pantallas bajas (celulares pequeños en horizontal, etc.) */
+@media (max-height: 640px) {
+  .splash__isotipo { width: 150px; }
+  .splash__nombre  { font-size: 90px; margin-top: -16px; }
+  .splash__lema    { margin-top: 40px; }
+}
+
+/* =========================================================
+   Pantalla A · Bienvenida
+   Medidas de Figma (440 × 956):
+   encabezado vino hasta y = 382 · título en y = 150
+   texto 20 px, ancho 249, en y = 432
+   forma curva 444 × 411 en y = 382 · botón 163 × 58 en y = 764
+   ========================================================= */
+
+.bienvenida {
+  --papel-forma: #F4EFE8;     /* mismo color de la forma curva exportada de Figma */
+
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  background: var(--vino);
+}
+
+.bienvenida__encabezado {
+  flex: none;
+  min-height: min(40vh, 382px);
+  min-height: min(40dvh, 382px);
+  padding: 34px 16px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.bienvenida__titulo {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  color: var(--papel-forma);
+  text-align: center;
+}
+
+.bienvenida__saludo,
+.bienvenida__nombre {
+  display: block;
+}
+
+.bienvenida__saludo {
+  font-size: min(44px, 10vw);
+  line-height: 1.318;         /* 58 px */
+}
+
+.bienvenida__nombre {
+  font-size: min(85px, 19.3vw);
+  line-height: 0.682;         /* 58 px */
+}
+
+.bienvenida__panel {
+  position: relative;
+  flex: none;
+  overflow: hidden;
+  padding: 50px 16px min(154px, 35vw);
+  /* el color de fondo termina donde empieza la curva */
+  background: linear-gradient(var(--papel-forma), var(--papel-forma)) top / 100% calc(100% - min(115px, 26.1vw)) no-repeat;
+}
+
+.bienvenida__forma {
+  position: absolute;
+  left: 50%;
+  bottom: 0;
+  width: 100.91%;             /* 444 / 440 */
+  max-width: none;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.bienvenida__texto {
+  position: relative;
+  max-width: 249px;
+  margin: 0 auto;
+  font-size: 1.25rem;         /* 20 px, ampliable (WCAG 1.4.4) */
+  line-height: 1.15;          /* 23 px: 9 líneas = 207 px, como en Figma */
+  color: var(--vino);
+  text-align: center;
+}
+
+.bienvenida__pie {
+  position: relative;
+  flex: 1 0 auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  margin-top: -29px;          /* el botón se monta sobre la curva */
+  padding-bottom: 24px;
+}
+
+.boton-vidrio {
+  min-width: 163px;
+  min-height: 58px;
+  padding: 8px 24px;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 11px;
+  background: rgba(217, 217, 217, 0.2);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.44);
+  font-family: var(--fuente-titulo);
+  font-size: 1.25rem;
+  line-height: 1.2;
+  color: #F4EFE8;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.boton-vidrio:hover {
+  background: rgba(217, 217, 217, 0.28);
+}
+
+.boton-vidrio:focus-visible {
+  outline: 3px solid #F4EFE8;
+  outline-offset: 3px;
+}
+
+/* Celulares bajos: el encabezado cede espacio para que el botón se vea sin desplazar */
+@media (max-height: 720px) {
+  .bienvenida__encabezado {
+    min-height: 30vh;
+    min-height: 30dvh;
+  }
+}
+
+/* =========================================================
+   Botón blanco (pantallas de primera apertura)
+   Figma: 153 × 58, radio 10, Young Serif 18 px
+   ========================================================= */
+
+.boton-blanco {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  min-width: 153px;
+  min-height: 58px;
+  margin-inline: auto;
+  padding: 8px 24px;
+  border: 0;
+  border-radius: 10px;
+  background: var(--blanco);
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.09);
+  font-family: var(--fuente-titulo);
+  font-size: 1.125rem;
+  line-height: 1.2;
+  color: var(--vino);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.boton-blanco:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+/* =========================================================
+   Pantalla B · Instalar
+   Medidas de Figma (440 × 956):
+   título 48 px en y = 136 · nota Android en y = 384
+   botón Instalar en y = 420 · notas iOS en y = 529 y 582
+   botón Ahora no en y = 668
+   ========================================================= */
+
+.instalar {
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: min(136px, 14.2vh) 16px 32px;
+  background: var(--papel);
+  text-align: center;
+}
+
+.instalar__titulo {
+  max-width: 289px;
+  margin: 0 auto min(108px, 11.3vh);
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: min(48px, 11vw);
+  line-height: 0.972;         /* ≈ 46,7 px: 3 líneas = 140 px, como en Figma */
+  color: var(--vino);
+}
+
+.instalar__nota {
+  max-width: 251px;
+  margin: 0 auto;
+  font-size: 0.8125rem;       /* 13 px, ampliable (WCAG 1.4.4) */
+  line-height: normal;
+  color: var(--verde);
+}
+
+.instalar__nota strong {
+  font-weight: 700;
+}
+
+.instalar__boton-instalar {
+  margin-top: 21px;
+}
+
+.instalar__estado:not(:empty) {
+  margin-top: 16px;
+}
+
+.instalar__grupo--ios {
+  margin-top: 51px;
+}
+
+.instalar__grupo--ios .instalar__nota + .instalar__nota {
+  margin-top: 23px;
+}
+
+/* En iPhone no hay grupo Android arriba: la instrucción va justo bajo el título */
+.instalar__grupo[hidden] + .instalar__grupo--ios {
+  margin-top: 0;
+}
+
+.instalar__boton-ahora-no {
+  margin-top: 55px;
+}
+
+/* Texto solo para lectores de pantalla */
+.solo-lectores {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Botón blanco ancho (290 px) y estado completado */
+.boton-blanco--ancho {
+  width: 290px;
+  max-width: 100%;
+}
+
+.boton-blanco--hecho {
+  color: var(--verde);
+}
+
+/* Check verde + texto: el estado no depende solo del color */
+.boton-blanco--hecho::before {
+  content: "";
+  flex: none;
+  width: 22px;
+  height: 22px;
+  margin-right: 10px;
+  background:
+    url("../img/confirmacion-check.png") center / 12px no-repeat,
+    url("../img/confirmacion-circulo.svg") center / 22px no-repeat;
+}
+
+/* =========================================================
+   Mesa 2 · Permisos (única vez)
+   Medidas de Figma (440 × 956):
+   isotipo 105 × 115 en y = 157 · notas en y = 315, 478, 641
+   botones 290 × 58 en y = 354, 517, 679 · «Continuar» en y = 835
+   ========================================================= */
+
+.permisos {
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: min(157px, 16.4vh) 16px 32px;
+  background: #F4EFE8;
+  text-align: center;
+}
+
+.permisos__isotipo {
+  width: 105px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.permisos__item {
+  margin-top: 66px;
+}
+
+.permisos__item:first-of-type {
+  margin-top: 43px;
+}
+
+.permisos__item .boton-blanco {
+  margin-top: 8px;
+}
+
+.permisos__mensaje {
+  max-width: 290px;
+  margin: 0 auto;
+  font-size: 0.8125rem;
+  line-height: normal;
+  color: var(--vino);
+}
+
+.permisos__mensaje:not(:empty) {
+  margin-top: 10px;
+}
+
+.permisos__continuar {
+  display: block;
+  min-width: 107px;
+  min-height: 44px;
+  margin: 85px auto 0;
+  padding: 8px 16px;
+  border: 0;
+  background: none;
+  font-family: var(--fuente-texto);
+  font-weight: 800;
+  font-size: 1rem;
+  line-height: normal;
+  color: var(--verde);
+  cursor: pointer;
+}
+
+.permisos__continuar:focus-visible {
+  outline: 3px solid var(--verde);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   Confirmación («Activa», «Ubicación Activa», «Guardado»)
+   Figma: velo papel al 87 % · círculo verde 200 px en y = 349
+   check 95 px · texto Karla ExtraBold 32 px en y = 573
+   ========================================================= */
+
+.confirmacion {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  background: rgba(244, 239, 232, 0.87);
+  cursor: pointer;
+}
+
+.confirmacion__marco {
+  position: relative;
+  max-width: var(--ancho-app);
+  height: 100%;
+  margin: 0 auto;
+}
+
+.confirmacion__icono {
+  position: absolute;
+  left: 50%;
+  top: min(var(--arriba), var(--arriba-vh));
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.confirmacion__circulo {
+  position: absolute;
+  left: 50%;
+  top: min(349px, 36.5vh);
+  width: 200px;
+  height: 200px;
+  transform: translateX(-50%);
+}
+
+.confirmacion__check {
+  position: absolute;
+  left: 52.5px;
+  top: 52.5px;
+}
+
+.confirmacion__texto {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: calc(min(349px, 36.5vh) + 224px);
+  margin: 0;
+  font-family: var(--fuente-texto);
+  font-weight: 800;
+  font-size: 2rem;
+  line-height: normal;
+  color: var(--verde);
+  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .confirmacion {
+    animation: velo 250ms ease-out both;
+  }
+}
+
+@keyframes velo {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* =========================================================
+   Ficha de emergencia
+   Medidas de Figma (440 × 1467):
+   encabezado 444 × 171 · título 30 px en y = 55
+   foto 130 px en y = 160 · etiquetas 14 px en x = 69
+   campos 290 × 39 en x = 81 · aviso 364 × 115 en y = 1262
+   ========================================================= */
+
+.ficha {
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding-bottom: 80px;
+  background: #F4EFE8;
+  overflow-x: hidden;
+}
+
+.ficha__encabezado {
+  position: relative;
+  height: 171px;
+}
+
+.ficha__curva {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100.91%;           /* 444 / 440 */
+  max-width: none;
+  height: 171px;
+}
+
+.ficha__titulo {
+  position: relative;
+  margin: 0;
+  padding: 55px 16px 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: min(30px, 7.5vw);
+  line-height: normal;
+  color: #F4EFE8;
+  text-align: center;
+}
+
+.ficha__foto {
+  position: relative;
+  width: 130px;
+  height: 130px;
+  margin: -11px auto 0;     /* la foto se monta 11 px sobre la curva */
+}
+
+.ficha__foto-circulo {
+  position: absolute;
+  left: -7.3px;
+  top: -7.3px;
+  max-width: none;
+}
+
+.ficha__foto-icono {
+  position: absolute;
+  left: 29px;
+  top: 29px;
+}
+
+.ficha__foto-imagen {
+  position: absolute;
+  inset: 5px;
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ficha__foto-icono[hidden],
+.ficha__foto-imagen[hidden] {
+  display: none;
+}
+
+.ficha__editar {
+  position: absolute;
+  left: 88px;
+  top: 108px;
+  width: 51px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.75rem;
+  color: var(--blanco);
+  cursor: pointer;
+}
+
+.ficha__editar img {
+  position: absolute;
+  inset: 0;
+}
+
+.ficha__editar span {
+  position: relative;
+}
+
+
+.ficha__foto:focus-within .ficha__editar {
+  outline: 2px solid var(--vino);
+  outline-offset: 2px;
+  border-radius: 6px;
+}
+
+.ficha__formulario {
+  width: min(364px, 100% - 32px);
+  margin: 47px auto 0;
+}
+
+.ficha__campo {
+  padding: 0 36px 0 26px;
+}
+
+.ficha__campo + .ficha__campo {
+  margin-top: 14px;
+}
+
+.ficha__campo label {
+  display: block;
+  font-size: 0.875rem;      /* 14 px */
+  line-height: normal;
+  color: var(--vino);
+}
+
+.ficha__campo input,
+.ficha__campo textarea {
+  display: block;
+  width: calc(100% - 12px);
+  margin: 11px 0 0 12px;
+  padding: 0 14px;
+  border: 0;
+  border-radius: 10px;
+  background: #F9F9F9;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.09);
+  font-family: var(--fuente-texto);
+  font-size: 1rem;          /* 16 px: evita el zoom automático en iPhone */
+  color: var(--tinta);
+}
+
+.ficha__campo input {
+  height: 39px;
+}
+
+.ficha__campo textarea {
+  height: 103px;
+  padding-top: 10px;
+  resize: vertical;
+}
+
+.ficha__campo input:focus-visible,
+.ficha__campo textarea:focus-visible {
+  outline: 2px solid var(--vino);
+  outline-offset: 2px;
+}
+
+.ficha__campo input[aria-invalid="true"] {
+  outline: 2px solid var(--vino);
+}
+
+.ficha__error {
+  margin: 0 0 0 12px;
+  font-size: 0.8125rem;
+  color: var(--vino);
+}
+
+.ficha__error:not(:empty) {
+  margin-top: 6px;
+}
+
+.ficha__aviso {
+  margin-top: 39px;
+  padding: 25px 16px 12px;
+  border: 1px solid var(--blanco);
+  text-align: center;
+}
+
+.ficha__aviso p {
+  margin: 0;
+  font-size: 0.75rem;       /* 12 px */
+  line-height: normal;
+  color: var(--vino);
+}
+
+.ficha__confirmar {
+  display: inline-flex;
+  align-items: center;
+  gap: 19px;
+  min-height: 44px;
+  margin-top: 2px;
+  padding: 0 12px;
+  border: 0;
+  background: none;
+  font-family: var(--fuente-texto);
+  font-size: 0.75rem;
+  color: var(--vino);
+  cursor: pointer;
+}
+
+.ficha__confirmar:focus-visible {
+  outline: 2px solid var(--vino);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   Pantalla C · Descargar contenido
+   Medidas de Figma (440 × 956):
+   título 48 px en y = 136 · botones 205 × 58 en y = 449 y 529
+   nota en y = 608
+   ========================================================= */
+
+.descargar__titulo {
+  margin-bottom: min(220px, 23vh);
+}
+
+.descargar__boton {
+  width: 205px;
+  max-width: 100%;
+}
+
+.descargar__ahora-no {
+  margin-top: 22px;
+}
+
+.descargar__nota {
+  margin-top: 21px;
+}
+
+.descargar__nota--ios {
+  margin-top: 10px;
+}
+
+.descargar__estado:not(:empty) {
+  margin-top: 14px;
+}
+
+.boton-blanco:disabled {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* =========================================================
+   Pantalla D · Listo para usar sin internet
+   Medidas de Figma (440 × 956):
+   título 48 px en y = 136 · círculo 200 px en y = 349
+   nota en y = 608 · botón 143 × 58 en y = 684
+   ========================================================= */
+
+.listo__titulo {
+  margin-bottom: min(73px, 7.6vh);
+}
+
+.listo__circulo {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.listo__nota {
+  margin-top: min(59px, 6.2vh);
+}
+
+.listo__boton {
+  min-width: 143px;
+  margin-top: 46px;
+}
+
+/* =========================================================
+   Página sin conexión (no está en Figma; usa el mismo sistema)
+   ========================================================= */
+
+.sin-conexion__titulo {
+  margin: 43px auto 24px;
+}
+
+.sin-conexion__boton {
+  margin-top: 40px;
+}
+
+/* =========================================================
+   Mesa 3 · Inicio
+   Medidas de Figma (440 × 956):
+   tarjeta papel 440 × 545 · título 50 px en y = 186
+   isotipo 88 × 97 en y = 400 · botones 115 × 56 en y = 654
+   datos 13 px en y = 749 · Instagram 41 px en y = 828
+   barra inferior 61 px en y = 895
+   ========================================================= */
+
+.inicio {
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding-bottom: calc(61px + env(safe-area-inset-bottom));
+  display: flex;
+  flex-direction: column;
+  background: var(--vino);
+  overflow-x: clip;
+}
+
+.inicio__tarjeta {
+  position: relative;
+  flex: none;
+  height: max(380px, min(545px, 57vh));
+  height: max(380px, min(545px, 57dvh));
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* La forma se ancla abajo: si la pantalla es baja, se oculta parte de su zona plana superior */
+.inicio__tarjeta-forma {
+  position: absolute;
+  left: -12.8px;
+  bottom: -16.8px;
+  width: calc(100% + 25.6px);
+  max-width: none;
+  height: 570.6px;
+}
+
+.inicio__titulo {
+  position: relative;
+  margin: min(186px, 19.5vh) 0 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: min(50px, 11.5vw);
+  line-height: 1;
+  color: var(--verde);
+  text-align: center;
+}
+
+.inicio__isotipo {
+  position: relative;
+  width: 88px;
+  height: auto;
+  margin: auto 0 48px;
+}
+
+.inicio__fases {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: min(109px, 11.4vh);
+  padding: 0 16px;
+}
+
+.inicio__fase {
+  position: relative;
+  width: min(115px, (100% - 30px) / 3);
+  height: 56px;
+  padding: 0 0 8px;
+  border: 0;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fuente-titulo);
+  font-size: 1.25rem;
+  color: var(--blanco);
+  cursor: pointer;
+}
+
+.inicio__fase img {
+  position: absolute;
+  left: -4px;
+  top: 0;
+  width: calc(100% + 8px);
+  max-width: none;
+  height: 64px;
+}
+
+.inicio__fase span {
+  position: relative;
+}
+
+.inicio__fase:focus-visible {
+  outline: 3px solid var(--papel);
+  outline-offset: 2px;
+  border-radius: 0 0 30px 30px;
+}
+
+.inicio__datos {
+  margin-top: 39px;
+  padding: 0 16px;
+  font-size: 0.8125rem;
+  line-height: 1;
+  color: var(--blanco);
+  text-align: center;
+}
+
+.inicio__datos p {
+  margin: 0;
+}
+
+.inicio__datos p + p {
+  margin-top: 3px;
+}
+
+.inicio__instagram {
+  align-self: center;
+  margin: auto 0 26px;
+  padding-top: 16px;
+}
+
+.inicio__instagram img {
+  width: 41px;
+  height: 41px;
+}
+
+.inicio__instagram:focus-visible {
+  outline: 3px solid var(--papel);
+  outline-offset: 2px;
+  border-radius: 50%;
+}
+
+/* =========================================================
+   Barra inferior (ficha · mapa · líneas de emergencia)
+   Figma: franja papel de 61 px · grupo de 252 px centrado
+   ficha 35 × 36 · mapa 38 × 38 · líneas 43 × 40
+   ========================================================= */
+
+.barra-inferior {
+  position: fixed;
+  left: 50%;
+  bottom: 0;
+  z-index: 50;
+  width: 100%;
+  max-width: var(--ancho-app);
+  height: calc(61px + env(safe-area-inset-bottom));
+  padding-bottom: env(safe-area-inset-bottom);
+  transform: translateX(-50%);
+  background: #F4EFE8;
+}
+
+.barra-inferior__grupo {
+  width: 252px;
+  height: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.barra-inferior__enlace {
+  display: block;
+  margin-top: 16px;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Área táctil de 44 px alrededor de cada ícono */
+.barra-inferior__enlace::after {
+  content: "";
+  position: absolute;
+  inset: -6px;
+}
+
+.barra-inferior__enlace--mapa {
+  margin-top: 13px;
+}
+
+.barra-inferior__enlace img {
+  filter: drop-shadow(0 0 2.8px rgba(0, 0, 0, 0.39));
+}
+
+.barra-inferior__enlace--lineas img {
+  filter: none;
+}
+
+.barra-inferior__enlace:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 4px;
+  border-radius: 4px;
+}
+
+/* Inicio en pantallas bajas: se reducen los espacios para que todo quepa sin desplazar */
+@media (max-height: 760px) {
+  .inicio__tarjeta {
+    height: max(320px, 52vh);
+    height: max(320px, 52dvh);
+  }
+  .inicio__titulo {
+    margin-top: 11vh;
+  }
+  .inicio__isotipo {
+    margin-bottom: 28px;
+  }
+  .inicio__fases {
+    margin-top: 24px;
+  }
+  .inicio__datos {
+    margin-top: 20px;
+  }
+  .inicio__instagram {
+    margin-bottom: 14px;
+    padding-top: 12px;
+  }
+}
+
+/* Barra inferior con cuatro accesos (inicio, ficha, mapa, líneas)
+   Figma: franja blanca de 66 px · grupo de 355 px · inicio 36 × 36 */
+.barra-inferior--blanca {
+  height: calc(66px + env(safe-area-inset-bottom));
+  background: var(--blanco);
+}
+
+.barra-inferior__grupo--cuatro {
+  width: min(355px, 100% - 32px);
+}
+
+.barra-inferior__grupo--cuatro .barra-inferior__enlace--lineas {
+  margin-top: 14px;
+}
+
+/* =========================================================
+   Mesa 3,2 · Durante
+   Medidas de Figma (440 × 4088):
+   encabezado 444 × 285 · «Durante» 48 px en y = 126
+   «un sismo» 78 px en y = 263 · subtítulos 32 px
+   prohibiciones en y = 655 · posición en y = 870
+   «¿Dónde estás?» en y = 1275 · tarjetas 214 px de ancho
+   ========================================================= */
+
+.durante {
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding-bottom: calc(66px + 51px + env(safe-area-inset-bottom));
+  background: #F4EFE8;
+  overflow-x: clip;
+  text-align: center;
+}
+
+.durante__encabezado {
+  position: relative;
+}
+
+.durante__curva {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100.91%;           /* 444 / 440 */
+  max-width: none;
+  height: 285px;
+}
+
+.durante__isotipo {
+  position: absolute;
+  left: 50%;
+  top: 70px;
+  width: 44px;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.durante__titulo {
+  position: relative;
+  margin: 0;
+  padding-top: 126px;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+}
+
+.durante__titulo-1 {
+  display: block;
+  font-size: 3rem;          /* 48 px */
+  line-height: 68px;
+  color: #F4EFE8;
+}
+
+.durante__titulo-2 {
+  display: block;
+  margin-top: 69px;
+  font-size: min(78px, 18vw);
+  line-height: 0.992;
+  color: var(--vino);
+}
+
+.durante__subtitulo {
+  margin: 0;
+  padding: 0 16px;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: min(32px, 7.3vw);
+  line-height: 33px;
+  color: var(--verde);
+}
+
+.durante__fuente {
+  margin: 0 auto;
+  font-size: 0.8125rem;     /* 13 px */
+  line-height: normal;
+  color: var(--verde);
+}
+
+.durante__calma {
+  margin-top: 102px;
+}
+
+.durante__fuente--calma {
+  max-width: 103px;
+  margin-top: 5px;
+}
+
+.durante__prohibido {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin: 67px 0 0;
+  padding: 0 16px;
+  list-style: none;
+}
+
+.durante__prohibido li {
+  width: min(115px, (100% - 30px) / 3);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.durante__prohibido img {
+  width: 100%;
+  height: auto;
+}
+
+.durante__prohibido span {
+  margin-top: 5px;
+  font-weight: 700;
+  font-size: min(20px, 5vw);
+  line-height: normal;
+  color: var(--vino);
+  white-space: nowrap;
+}
+
+.durante__posicion {
+  margin-top: 75px;
+}
+
+.durante__posicion-picto {
+  width: 217px;
+  max-width: calc(100% - 32px);
+  height: auto;
+  margin: 50px auto 0;
+}
+
+.durante__posicion-texto {
+  max-width: 299px;
+  margin: 49px auto 0;
+  padding: 0 16px;
+  box-sizing: content-box;
+  font-size: 1rem;
+  line-height: normal;
+  color: var(--vino);
+}
+
+.durante__posicion-texto strong {
+  display: block;
+  font-size: 0.8125rem;
+}
+
+.durante__lugares {
+  margin-top: 73px;
+}
+
+/* ---------- Escenarios (tarjeta verde + texto) ---------- */
+
+.escenario {
+  margin-top: var(--arriba);
+}
+
+.escenario__fila {
+  display: grid;
+  grid-template-columns: min(214px, 50% - 6px) 1fr;
+  grid-template-rows: 1fr auto;
+  min-height: var(--alto);
+  text-align: left;
+}
+
+.escenario--der .escenario__fila {
+  grid-template-columns: 1fr min(214px, 50% - 6px);
+  text-align: right;
+}
+
+.escenario__tarjeta {
+  position: relative;
+  grid-row: 1 / 3;
+  grid-column: 1;
+  height: var(--alto);
+}
+
+.escenario--der .escenario__tarjeta {
+  grid-column: 2;
+}
+
+.escenario__forma {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.escenario--der .escenario__forma {
+  transform: rotate(180deg);
+}
+
+.escenario__picto {
+  position: absolute;
+  left: 50%;
+  top: var(--picto-y);
+  max-width: 90%;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.escenario__nombre {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: var(--etiqueta-y);
+  margin: 0;
+  font-weight: 800;
+  font-size: 1.25rem;       /* 20 px */
+  line-height: normal;
+  color: #F4EFE8;
+  text-align: center;
+}
+
+.escenario__texto,
+.escenario__fuente {
+  grid-column: 2;
+  margin: 0;
+  padding: 0 16px 0 20px;
+}
+
+.escenario--der .escenario__texto,
+.escenario--der .escenario__fuente {
+  grid-column: 1;
+  padding: 0 23px 0 16px;
+}
+
+.escenario__texto {
+  grid-row: 1;
+  padding-top: var(--texto-y);
+  font-size: 1rem;
+  line-height: normal;
+  color: var(--tinta);
+  box-sizing: content-box;
+}
+
+.escenario--der .escenario__texto {
+  justify-self: end;
+}
+
+.escenario__texto--ancho-159 { max-width: 159px; }
+.escenario__texto--ancho-154 { max-width: 154px; }
+.escenario__texto--ancho-148 { max-width: 148px; }
+.escenario__texto--ancho-138 { max-width: 138px; }
+
+.escenario__fuente {
+  grid-row: 2;
+  align-self: end;
+  padding-top: 12px;
+  font-size: 0.8125rem;
+  line-height: normal;
+  color: var(--verde);
+}
+
+.escenario__extra {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  gap: var(--extra-hueco, 0);
+  margin-top: var(--extra-arriba);
+  padding: 0 16px;
+}
+
+.escenario__extra img {
+  max-width: 45%;
+  height: auto;
+}
+
+.escenario__extra img:only-child {
+  max-width: 60%;
+}
+
+/* =========================================================
+   ANTES · estilos comunes
+   ========================================================= */
+
+body.pantalla-blanca {
+  background: var(--blanco);
+}
+
+/* Botón de Antes: transparente con letra vino; al presionarlo, vino con letra crema
+   Figma: 166 × 60, radio 11, fondo rgba(217,217,217,.2), sombra 0 0 11.6 rgba(0,0,0,.2) */
+.boton-antes {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 166px;
+  max-width: 100%;
+  min-height: 60px;
+  padding: 6px 12px;
+  border: 0;
+  border-radius: 11px;
+  background: rgba(217, 217, 217, 0.2);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.2);
+  font-family: var(--fuente-titulo);
+  font-size: 1.25rem;       /* 20 px */
+  line-height: 0.962;
+  color: var(--vino);
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.boton-antes--pequeno {
+  font-size: 1.0625rem;     /* 17 px */
+}
+
+.boton-antes:active,
+.boton-antes--presionado {
+  background: var(--vino);
+  color: #F4EFE8;
+}
+
+.boton-antes:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+/* Encabezado de subpantalla: isotipo vino + título */
+.seccion {
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding-bottom: calc(66px + 48px + env(safe-area-inset-bottom));
+  background: #F4EFE8;
+  overflow-x: clip;
+}
+
+.seccion__encabezado {
+  padding-top: 67px;
+  text-align: center;
+}
+
+.seccion__isotipo {
+  width: 45px;
+  height: auto;
+  margin: 0 auto;
+}
+
+.seccion__titulo {
+  margin: 20px 0 0;
+  padding: 0 16px;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  line-height: 0.889;
+  color: var(--vino);
+}
+
+.seccion__titulo-1 {
+  display: block;
+  font-size: 3rem;          /* 48 px */
+}
+
+.seccion__titulo-2 {
+  display: block;
+  font-size: min(32px, 7.5vw);
+}
+
+/* Panel blanco con esquinas redondeadas (Figma: radio 20, sombra 0 0 8.1 rgba(0,0,0,.12)) */
+.panel-blanco {
+  border-radius: 20px;
+  background: var(--blanco);
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+}
+
+/* =========================================================
+   Mesa 3,1 · Antes (menú)
+   Figma: encabezado 444 × 285 · «Antes» 48 px en y = 128
+   botones 166 × 60 en x = 51 y x = 229 · filas desde y = 320
+   ========================================================= */
+
+.antes {
+  width: 100%;
+  max-width: var(--ancho-app);
+  min-height: 100vh;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding-bottom: calc(66px + 40px + env(safe-area-inset-bottom));
+  background: #F4EFE8;
+  overflow-x: clip;
+}
+
+.antes__encabezado {
+  position: relative;
+  height: 285px;
+  text-align: center;
+}
+
+.antes__curva {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100.91%;
+  max-width: none;
+  height: 285px;
+}
+
+.antes__isotipo {
+  position: absolute;
+  left: 50%;
+  top: 72px;
+  width: 44px;
+  height: auto;
+  transform: translateX(-50%);
+}
+
+.antes__titulo {
+  position: relative;
+  margin: 0;
+  padding-top: 128px;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 3rem;
+  line-height: 68px;
+  color: #F4EFE8;
+}
+
+.antes__menu {
+  display: grid;
+  gap: 61px;
+  margin-top: 35px;         /* primera fila en y = 320 */
+}
+
+.antes__fila {
+  display: grid;
+  grid-template-columns: min(166px, 50% - 22px) min(166px, 50% - 22px);
+  justify-content: center;
+  column-gap: 12px;
+  align-items: center;
+}
+
+.antes__fila--izq img {
+  justify-self: start;
+  margin-left: 6px;
+}
+
+.antes__fila--der img {
+  justify-self: end;
+  margin-right: 7px;
+}
+
+/* =========================================================
+   Mesa 3,1-3 · Dónde protegerme en casa (menú)
+   Figma: botones 162 × 56 en x = 60, filas en y = 378, 505, 632
+   ========================================================= */
+
+.protegerme__menu {
+  display: grid;
+  gap: 71px;
+  margin-top: 142px;
+  padding: 0 51px 0 60px;
+}
+
+.protegerme__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.boton-antes--protegerme {
+  width: 162px;
+  min-height: 56px;
+  font-size: 1rem;          /* 16 px */
+  line-height: 0.962;
+}
+
+/* =========================================================
+   Mesa 3,1-1 · Qué hacer antes de un sismo
+   Figma: tarjetas blancas 260 × 212 que tocan el borde
+   (derecha e izquierda alternadas) · ícono afuera de la tarjeta
+   ========================================================= */
+
+.que-hacer__lista {
+  display: grid;
+  gap: 27px;
+  margin-top: 60px;         /* primera tarjeta en y = 296 */
+}
+
+.consejo {
+  display: grid;
+  grid-template-columns: 1fr min(260px, 59%);
+  align-items: center;
+}
+
+.consejo--izq {
+  grid-template-columns: min(260px, 59%) 1fr;
+}
+
+.consejo__icono {
+  grid-row: 1;
+  justify-self: center;
+  max-width: 90%;
+  height: auto;
+}
+
+.consejo--der .consejo__icono { grid-column: 1; }
+.consejo--izq .consejo__icono { grid-column: 2; }
+
+.consejo__tarjeta {
+  grid-row: 1;
+  min-height: 212px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: var(--texto-y) 29px 12px;
+  background: var(--blanco);
+  transform: translateX(var(--corrida, 0));
+}
+
+.consejo--der .consejo__tarjeta {
+  grid-column: 2;
+  border-radius: 20px 0 0 20px;
+  align-items: flex-end;
+  text-align: right;
+}
+
+.consejo--izq .consejo__tarjeta {
+  grid-column: 1;
+  border-radius: 0 20px 20px 0;
+  padding-left: 32px;
+}
+
+.consejo__texto {
+  max-width: var(--texto-ancho);
+  margin: 0;
+  line-height: normal;
+  color: var(--verde);
+}
+
+.consejo__fuente {
+  margin: 12px 0 0;
+  font-size: 0.75rem;       /* 12 px */
+  color: var(--verde);
+}
+
+/* =========================================================
+   Mesa 3,1-2 · Mi kit
+   Figma: paneles blancos 393 px · franjas papel de 41 px con el
+   nombre (Young Serif 16) y la fuente (12 px) · íconos de ~60 px
+   ========================================================= */
+
+.kit__nivel {
+  margin: 56px 0 0;
+  padding: 0 16px 0 40px;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 2rem;          /* 32 px */
+  line-height: 1;
+  color: var(--verde);
+}
+
+.kit__nivel-sub {
+  display: block;
+  font-size: min(24px, 5.6vw);
+}
+
+.kit__panel {
+  margin: 27px auto 0;
+  width: min(393px, 100% - 32px);
+  padding: 26px 0 30px;
+  border-radius: 20px;
+  background: var(--blanco);
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+}
+
+.kit__lista,
+.kit__revision {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.kit__item + .kit__item {
+  margin-top: 0;
+}
+
+.kit__banda {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 41px;
+  padding: 4px 34px 4px 35px;
+  background: #F4EFE8;
+}
+
+.kit__item--der .kit__banda {
+  flex-direction: row-reverse;
+}
+
+.kit__nombre {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 1rem;
+  line-height: 0.95;
+  color: var(--vino);
+}
+
+.kit__item--der .kit__nombre {
+  text-align: right;
+}
+
+.kit__fuente {
+  flex: none;
+  margin: 0;
+  font-size: 0.75rem;
+  color: var(--verde);
+}
+
+.kit__contenido {
+  display: flex;
+  align-items: center;
+  gap: 22px;
+  min-height: 107px;
+  padding: 20px 34px 22px 35px;
+}
+
+.kit__item--der .kit__contenido {
+  flex-direction: row-reverse;
+}
+
+.kit__icono {
+  flex: none;
+  height: auto;
+}
+
+.kit__texto {
+  flex: 1;
+  margin: 0;
+  font-size: 1rem;
+  line-height: normal;
+  color: var(--verde);
+}
+
+.kit__item--texto-derecha .kit__texto { text-align: right; }
+.kit__item--pequeno .kit__texto { font-size: 0.875rem; }
+.kit__item--mediano .kit__texto { font-size: 0.9375rem; }
+
+.kit__panel--revision {
+  padding: 43px 34px 16px 35px;
+}
+
+.kit__revision {
+  padding-left: 24px;
+  list-style: disc;
+  font-size: 1rem;
+  line-height: normal;
+  color: var(--verde);
+}
+
+.kit__fuente--revision {
+  margin-top: 17px;
+  text-align: right;
+}
+
+/* =========================================================
+   Mesa 3,1-4 · Mi ficha de emergencia (editable)
+   Figma: tarjeta papel 393 × 751 en y = 299 · líneas blancas de 2 px
+   etiquetas 14 px vino · datos Karla Bold 14 px negro
+   ========================================================= */
+
+.mi-ficha {
+  background: var(--blanco);
+}
+
+.mi-ficha__tarjeta {
+  width: min(393px, 100% - 32px);
+  margin: 79px auto 0;
+  padding: 50px 31px 40px;
+  border-radius: 20px;
+  background: #F4EFE8;
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+}
+
+.mi-ficha input,
+.mi-ficha textarea {
+  min-width: 0;
+  margin: 0;
+  padding: 2px 0;
+  border: 0;
+  border-radius: 4px;
+  background: transparent;
+  font-family: var(--fuente-texto);
+  font-weight: 700;
+  font-size: 0.875rem;      /* 14 px */
+  line-height: normal;
+  color: #000000;
+}
+
+.mi-ficha input::placeholder,
+.mi-ficha textarea::placeholder {
+  color: #A6A6A6;           /* ejemplo en gris claro: no se confunde con un dato real */
+  font-weight: 700;
+  opacity: 1;
+}
+
+.mi-ficha input:focus-visible,
+.mi-ficha textarea:focus-visible {
+  outline: 2px solid var(--vino);
+  outline-offset: 3px;
+}
+
+.mi-ficha__nombre {
+  display: block;
+  width: 100%;
+  padding-bottom: 6px !important;
+  border-bottom: 2px solid var(--blanco) !important;
+  border-radius: 0 !important;
+  font-size: 1rem !important;
+  color: var(--vino) !important;
+  text-align: center;
+}
+
+.mi-ficha__nombre::placeholder {
+  color: #9C6F79 !important; /* vino suave para el ejemplo del nombre */
+}
+
+.mi-ficha__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  margin: 0 6px 0 14px;
+  padding: 14px 0 12px;
+  border: 0;
+  border-bottom: 2px solid var(--blanco);
+}
+
+.mi-ficha__fila label,
+.mi-ficha__fila legend {
+  flex: none;
+  padding: 0;
+  font-size: 0.875rem;
+  line-height: normal;
+  color: var(--vino);
+}
+
+.mi-ficha__fila input {
+  flex: 1;
+  text-align: right;
+}
+
+.mi-ficha__fila--doble {
+  display: block;
+}
+
+.mi-ficha__fila--doble legend {
+  float: left;
+  width: 100%;
+  margin-bottom: 10px;
+}
+
+.mi-ficha__par {
+  clear: both;
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.mi-ficha__par + .mi-ficha__par {
+  margin-top: 12px;
+}
+
+.mi-ficha__par > input:first-child {
+  text-align: left;
+}
+
+.mi-ficha__tel {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 700;
+  font-size: 0.875rem;
+  color: var(--vino);
+}
+
+.mi-ficha__tel input {
+  width: 92px;
+  text-align: right;
+}
+
+.mi-ficha__fila--ultima {
+  display: block;
+  border-bottom: 0;
+}
+
+.mi-ficha__fila--ultima textarea {
+  display: block;
+  width: 100%;
+  margin-top: 12px;
+  resize: none;
+  overflow: hidden;
+}
+
+.mi-ficha__aviso {
+  max-width: 300px;
+  margin: 16px auto 0;
+  padding: 0 16px;
+  font-size: 0.75rem;
+  color: var(--verde);
+  text-align: center;
+}
+
+/* =========================================================
+   Mesa 3,1-5 · Mapa de mi zona
+   Figma: cuadro blanco 393 × 682 en y = 301
+   ========================================================= */
+
+.mapa .seccion__titulo {
+  margin-top: 30px;
+  line-height: 0.962;
+}
+
+.mapa__tarjeta {
+  position: relative;
+  width: min(393px, 100% - 32px);
+  height: min(682px, 100vh - 66px - 120px);
+  height: min(682px, 100dvh - 66px - 120px);
+  min-height: 320px;
+  margin: 82px auto 0;
+  border-radius: 20px;
+  background: var(--blanco);
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+  overflow: hidden;
+}
+
+.mapa__visor {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  touch-action: none;
+  cursor: grab;
+  user-select: none;
+  -webkit-user-select: none;
+}
+
+.mapa__visor--moviendo {
+  cursor: grabbing;
+}
+
+.mapa__visor:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: -3px;
+  border-radius: 20px;
+}
+
+.mapa__imagen {
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: none;
+  transform-origin: 0 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+.mapa__vacio {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0;
+  padding: 24px;
+  font-size: 0.875rem;
+  color: var(--verde);
+  text-align: center;
+}
+
+.mapa__vacio[hidden],
+.mapa__imagen[hidden] {
+  display: none;
+}
+
+.mapa__controles {
+  position: absolute;
+  right: 12px;
+  top: 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.mapa__control {
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 11px;
+  background: var(--blanco);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.2);
+  font-family: var(--fuente-texto);
+  font-weight: 700;
+  font-size: 1.5rem;
+  line-height: 1;
+  color: var(--vino);
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.mapa__control:active {
+  background: var(--vino);
+  color: #F4EFE8;
+}
+
+.mapa__control:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+.mapa__control:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   Mesa 3,1-6 · Líneas de emergencia
+   Figma: tarjeta blanca 372 × 334 en y = 295 · nombre 16 px vino
+   número 20 px verde · filas de ~31 px
+   ========================================================= */
+
+.lineas .seccion__titulo {
+  margin-top: 16px;
+  line-height: 0.962;
+}
+
+.lineas__tarjeta {
+  width: min(372px, 100% - 32px);
+  margin: 84px auto 0;
+  padding: 46px 51px 72px 41px;
+  border-radius: 20px;
+  background: var(--blanco);
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+}
+
+.lineas__lista {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.lineas__fila {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 31.3px;
+  text-decoration: none;
+  border-radius: 6px;
+}
+
+.lineas__nombre {
+  font-size: 1rem;
+  line-height: 0.95;
+  color: var(--vino);
+}
+
+.lineas__numero {
+  font-size: 1.25rem;
+  line-height: normal;
+  color: #2D4D43;
+}
+
+.lineas__fila:focus-visible {
+  outline: 2px solid var(--vino);
+  outline-offset: 2px;
+}
+
+.lineas__fila:active {
+  background: rgba(122, 48, 64, 0.08);
+}
+
+/* Antes: posición exacta de las filas según Figma (y = 320, 431, 552, 673, 797, 924) */
+.antes__menu {
+  gap: 0;
+  padding-left: 6px;
+}
+.antes__fila:nth-child(2) { margin-top: 51px; }
+.antes__fila:nth-child(3) { margin-top: 61px; }
+.antes__fila:nth-child(4) { margin-top: 61px; }
+.antes__fila:nth-child(5) { margin-top: 64px; }
+.antes__fila:nth-child(6) { margin-top: 67px; }
+
+/* Mi kit: separación de los niveles según Figma (y = 292, 2010, 3552) */
+.kit__nivel:nth-of-type(1) { margin-top: 112px; }
+.kit__nivel:nth-of-type(2) { margin-top: 90px; }
+.kit__nivel:nth-of-type(3) { margin-top: 72px; }
+.kit__panel--revision { min-height: 261px; display: flex; flex-direction: column; justify-content: space-between; }
+
+/* Ajuste vertical según Figma (primer elemento en y = 296 y y = 378) */
+.que-hacer__lista { margin-top: 88px; }
+.protegerme__menu { margin-top: 169px; }
+
+/* Mi ficha: la tarjeta empieza en y = 299 y las filas dobles no se salen */
+.mi-ficha__tarjeta { margin-top: 91px; }
+.mi-ficha__fila--doble { min-width: 0; }
+.mi-ficha__par > input { flex: 1 1 0; width: 0; }
+.mi-ficha__par > input + input { text-align: right; }
+.mi-ficha__tel { flex: none; }
+
+/* =========================================================
+   Mesa 3,1-3,1 · ¿Cómo es mi casa o edificio?
+   Figma: fondo blanco con curva papel arriba (440 × 352)
+   botones 162 × 56 en y = 518, 628, 737 · «¿Cómo averiguarlo?» en y = 857
+   ========================================================= */
+
+.casa {
+  position: relative;
+  background: var(--blanco);
+}
+
+.casa__curva {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  max-width: none;
+  height: 352px;
+}
+
+.casa .seccion__encabezado {
+  position: relative;
+}
+
+.casa__intro {
+  position: relative;
+  max-width: 229px;
+  margin: 149px auto 0;
+  font-size: 1rem;
+  line-height: 1.073;
+  color: var(--verde);
+  text-align: center;
+}
+
+.casa__opciones {
+  display: grid;
+  justify-items: center;
+  gap: 54px;
+  margin-top: 109px;
+}
+
+.casa__averiguar {
+  max-width: 304px;
+  margin: 64px auto 0;
+  padding: 0 16px;
+  box-sizing: content-box;
+  color: var(--verde);
+}
+
+.casa__averiguar h2 {
+  margin: 0;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  font-size: 1rem;
+  text-align: center;
+}
+
+.casa__averiguar ul {
+  margin: 11px 0 0;
+  padding-left: 24px;
+  font-size: 1rem;
+  line-height: 1.073;
+}
+
+.casa__averiguar li + li {
+  margin-top: 17px;
+}
+
+.casa__guia {
+  display: block;
+  width: max-content;
+  margin: 12px auto 0;
+  font-family: var(--fuente-titulo);
+  font-size: 1rem;
+  color: var(--vino);
+  text-decoration: underline;
+}
+
+.casa__guia:focus-visible {
+  outline: 2px solid var(--vino);
+  outline-offset: 3px;
+}
+
+/* Superposición: velo papel al 87 % y tarjeta blanca 393 × 373 */
+.superposicion {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+  background: rgba(244, 239, 232, 0.87);
+  cursor: pointer;
+}
+
+.superposicion[hidden] {
+  display: none;
+}
+
+body.con-superposicion {
+  overflow: hidden;
+}
+
+.superposicion__tarjeta {
+  position: relative;
+  width: min(393px, 100%);
+  min-height: 373px;
+  padding: 44px 24px 36px;
+  border-radius: 20px;
+  background: var(--blanco);
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+  cursor: default;
+}
+
+.superposicion__tarjeta:focus {
+  outline: none;
+}
+
+.superposicion__tarjeta:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+.superposicion__pictos {
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.superposicion__pictos img {
+  max-width: 48%;
+  height: auto;
+}
+
+.superposicion__texto {
+  max-width: 255px;
+  margin: 50px auto 0;
+  font-family: var(--fuente-titulo);
+  font-size: 1.25rem;
+  line-height: 0.95;
+  color: var(--vino);
+  text-align: center;
+}
+
+/* «Volver» solo se ve al llegar con el teclado */
+.superposicion__volver {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  padding: 6px 14px;
+  border: 0;
+  border-radius: 8px;
+  background: var(--vino);
+  font-family: var(--fuente-texto);
+  font-size: 0.875rem;
+  color: #F4EFE8;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.superposicion__volver:focus-visible {
+  opacity: 1;
+  pointer-events: auto;
+  outline: 3px solid var(--vino);
+  outline-offset: 2px;
+}
+
+/* =========================================================
+   Mesa 3,1-3,2 · Dónde protegerme (SÍ / NO)
+   Figma: botones 122 × 56 en y = 296 · tarjetas 336 × 265, radio 30
+   verdes (SÍ) y vino (NO), separadas 30 px
+   ========================================================= */
+
+.sino__botones {
+  display: flex;
+  justify-content: center;
+  gap: 52px;
+  margin-top: 88px;
+}
+
+.boton-sino {
+  width: 122px;
+  height: 56px;
+  border: 0;
+  border-radius: 11px;
+  background: rgba(217, 217, 217, 0.2);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.2);
+  font-family: var(--fuente-titulo);
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  touch-action: manipulation;
+}
+
+.boton-sino--si { color: var(--verde); }
+.boton-sino--no { color: var(--vino); }
+
+.boton-sino:focus-visible {
+  outline: 3px solid currentColor;
+  outline-offset: 3px;
+}
+
+.sino__lista {
+  display: grid;
+  gap: 30px;
+  margin: 104px 0 0;
+  padding: 0 16px;
+  list-style: none;
+}
+
+.sino__lista[hidden] {
+  display: none;
+}
+
+.tarjeta-sino {
+  width: min(336px, 100%);
+  min-height: 265px;
+  margin: 0 auto;
+  padding: 22px 30px 9px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 30px;
+  background: var(--verde);
+  color: #F4EFE8;
+  text-align: center;
+}
+
+.sino__lista--no .tarjeta-sino {
+  background: var(--vino);
+}
+
+.tarjeta-sino__texto {
+  max-width: 272px;
+  margin: 0;
+  font-size: 1rem;
+  line-height: normal;
+}
+
+.tarjeta-sino__picto {
+  margin-top: auto;
+  padding-top: 12px;
+  height: auto;
+}
+
+.tarjeta-sino__fuente {
+  align-self: flex-end;
+  margin: 14px 0 0;
+  font-size: 0.75rem;
+}
+
+/* =========================================================
+   Mesa 3,1-3,3 · Checklist
+   Figma: corazones 53 × 52 en x = 67 cada 96 px desde y = 302
+   texto 16 px vino de 221 px en x = 152
+   ========================================================= */
+
+.checklist__lista {
+  margin: 100px 0 0;
+  padding: 0 16px;
+  list-style: none;
+}
+
+.checklist__item {
+  display: grid;
+  grid-template-columns: 53px minmax(0, 221px);
+  justify-content: center;
+  align-items: center;
+  column-gap: 32px;
+  min-height: 96px;
+}
+
+.checklist__corazon {
+  position: relative;
+  width: 53px;
+  height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 0;
+  border-radius: 11px;
+  background: rgba(217, 217, 217, 0.2);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  touch-action: manipulation;
+  transition: background-color 120ms ease;
+}
+
+.checklist__corazon[aria-pressed="true"] {
+  background: var(--vino);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.44);
+}
+
+.checklist__corazon-crema,
+.checklist__corazon[aria-pressed="true"] .checklist__corazon-vino {
+  display: none;
+}
+
+.checklist__corazon[aria-pressed="true"] .checklist__corazon-crema {
+  display: block;
+}
+
+.checklist__corazon:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+.checklist__texto {
+  margin: 0;
+  font-size: 1rem;
+  line-height: normal;
+  color: var(--vino);
+}
+
+/* =========================================================
+   Mesa 3,3 · Después (menú)
+   Figma: encabezado vino · «Después» 48 px en y = 120
+   botones 281 × 86 en y = 378, 502, 614
+   ========================================================= */
+
+.despues__isotipo { top: 63px; }
+.despues__titulo { padding-top: 120px; }
+
+.despues__menu {
+  display: grid;
+  justify-items: center;
+  margin-top: 93px;
+  padding: 0 16px;
+}
+
+.despues__menu > :nth-child(2) { margin-top: 38px; }
+.despues__menu > :nth-child(3) { margin-top: 26px; }
+
+.boton-antes--grande {
+  width: 281px;
+  min-height: 86px;
+  line-height: 0.79;
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.44);
+}
+
+/* =========================================================
+   Mesa 3,3-1 · Qué hacer luego del sismo
+   Figma: tarjetas 245 × 212 (blancas y vino), separadas 36 px
+   ========================================================= */
+
+.que-hacer__lista--despues {
+  gap: 36px;
+  margin-top: 86px;
+}
+
+.consejo--estrecho {
+  grid-template-columns: 1fr min(245px, 56%);
+}
+
+.consejo--estrecho.consejo--izq {
+  grid-template-columns: min(245px, 56%) 1fr;
+}
+
+.consejo--estrecho.consejo--der .consejo__tarjeta {
+  padding-right: 24px;
+  padding-left: 16px;
+}
+
+.consejo--estrecho.consejo--izq .consejo__tarjeta {
+  padding-left: 46px;
+  padding-right: 16px;
+}
+
+.consejo__iconos {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.consejo__iconos img {
+  max-width: 100%;
+  height: auto;
+}
+
+.consejo--vino .consejo__tarjeta {
+  background: var(--vino);
+}
+
+.consejo--vino .consejo__texto,
+.consejo--vino .consejo__fuente {
+  color: #F4EFE8;
+}
+
+.consejo--estrecho .consejo__fuente {
+  font-size: 0.8125rem;     /* 13 px */
+}
+
+/* =========================================================
+   Mesa 3,3-2 · Dónde buscar ayuda
+   Figma: pestañas 122 × 56 en y = 296 · tarjetas «Llamar a» 372 × 104
+   cada 166 px desde y = 418 · mapa 393 × 533 en y = 418
+   ========================================================= */
+
+.ayuda__titulo,
+.portales__titulo {
+  margin: 16px 0 0;
+  padding: 0 16px;
+  font-family: var(--fuente-titulo);
+  font-weight: 400;
+  color: var(--vino);
+  text-align: center;
+}
+
+.ayuda__titulo-1,
+.ayuda__titulo-2 {
+  display: block;
+  line-height: 48px;
+}
+
+.ayuda__titulo-1 { font-size: 1.875rem; }   /* 30 px */
+.ayuda__titulo-2 { font-size: 3.125rem; }   /* 50 px */
+
+.ayuda__pestanas {
+  display: flex;
+  justify-content: center;
+  gap: 55px;
+  margin-top: 68px;
+}
+
+.pestana {
+  width: 122px;
+  min-height: 56px;
+  padding: 4px 8px;
+  border: 0;
+  border-radius: 11px;
+  background: rgba(217, 217, 217, 0.2);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.2);
+  font-family: var(--fuente-titulo);
+  font-size: 1rem;
+  line-height: 0.9;
+  color: var(--vino);
+  cursor: pointer;
+  touch-action: manipulation;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 120ms ease, color 120ms ease;
+}
+
+.pestana:active,
+.pestana[aria-pressed="true"] {
+  background: var(--vino);
+  color: #F4EFE8;
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.44);
+}
+
+.pestana:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+.ayuda__panel {
+  margin-top: 66px;
+}
+
+.ayuda__panel[hidden] {
+  display: none;
+}
+
+.ayuda__lineas {
+  display: grid;
+  gap: 62px;
+  margin: 0;
+  padding: 0 16px;
+  list-style: none;
+}
+
+/* Botón grande para llamar: «Llamar a» + número arriba, nombre abajo */
+.llamar {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start;
+  column-gap: 12px;
+  width: min(372px, 100%);
+  min-height: 104px;
+  margin: 0 auto;
+  padding: 20px 43px 14px 30px;
+  border-radius: 20px;
+  background: var(--blanco);
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.llamar__texto {
+  display: contents;
+}
+
+.llamar__texto strong,
+.llamar__texto span {
+  font-size: min(32px, 7.4vw);
+  line-height: 0.95;
+  color: var(--vino);
+}
+
+.llamar__texto strong {
+  grid-column: 1;
+  grid-row: 1;
+  font-weight: 800;
+}
+
+.llamar__texto span {
+  grid-column: 1 / 3;
+  grid-row: 2;
+  font-weight: 400;
+}
+
+.llamar__numero {
+  grid-column: 2;
+  grid-row: 1;
+  margin-top: -3px;
+  font-weight: 800;
+  font-size: min(36px, 8.2vw);
+  line-height: normal;
+  color: #2D4D43;
+}
+
+.llamar:active {
+  background: #F4EFE8;
+}
+
+.llamar:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+.ayuda__mapa {
+  height: min(533px, 100vh - 66px - 40px);
+  height: min(533px, 100dvh - 66px - 40px);
+  margin-top: 0;
+}
+
+/* =========================================================
+   Mesa 3,3-3 · Portales oficiales de ayuda
+   Figma: tarjetas blancas 393 × 182 desde y = 285, separadas 16 px
+   botón «Entrar al portal» 134 × 56 con la mano debajo
+   ========================================================= */
+
+.portales__titulo-1 {
+  display: block;
+  font-size: 1.875rem;
+  line-height: 0.986;
+}
+
+.portales__titulo-2 {
+  display: block;
+  font-size: 3rem;
+  line-height: 0.9;
+}
+
+.portales__lista {
+  display: grid;
+  gap: 16px;
+  margin: 49px 0 0;
+  padding: 0 16px;
+  list-style: none;
+}
+
+.portal {
+  display: flex;
+  flex-direction: column;
+  width: min(393px, 100%);
+  min-height: 182px;
+  margin: 0 auto;
+  padding: 23px 38px 22px 26px;
+  border-radius: 20px;
+  background: var(--blanco);
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+}
+
+.portal__nombre {
+  margin: 0;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: normal;
+  color: var(--vino);
+}
+
+.portal__descripcion {
+  margin: 6px 0 0;
+  font-size: 1rem;
+  color: var(--tinta);
+}
+
+.portal__entrar {
+  position: relative;
+  align-self: flex-end;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 134px;
+  min-height: 56px;
+  margin-top: auto;
+  border-radius: 11px;
+  background: rgba(217, 217, 217, 0.2);
+  box-shadow: 0 0 11.6px rgba(0, 0, 0, 0.2);
+  font-size: 1rem;
+  color: var(--tinta);
+  text-decoration: underline;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.portal__entrar img {
+  position: absolute;
+  left: 50%;
+  top: 45px;
+  transform: translateX(-50%);
+}
+
+.portal__entrar:active {
+  background: var(--vino);
+  color: #F4EFE8;
+}
+
+.portal__entrar:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+.portales__nota {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: min(393px, 100% - 32px);
+  min-height: 56px;
+  margin: 81px auto 0;
+  padding: 6px 24px 6px 40px;
+  border: 1px solid var(--blanco);
+  border-radius: 20px;
+  box-shadow: 0 0 8.1px rgba(0, 0, 0, 0.12);
+  font-size: 0.8125rem;
+  color: var(--vino);
+}
+
+.portales__nota img {
+  flex: none;
+}
+
+/* «Llamar a»: el nombre usa casi todo el ancho; el número conserva su margen */
+.llamar { padding-right: 17px; }
+.llamar__numero { margin-right: 26px; }
+
+/* Ajustes según Figma: «Línea de emergencia» en una línea y posición de Portales */
+.llamar { padding-right: 12px; }
+.portales__titulo { margin-top: 31px; }
+.portales__lista { margin-top: 64px; }
+.portal { padding-bottom: 35px; }
+
+/* =========================================================
+   Mesa 4 · Inicio (alerta activa)
+   Figma (440 × 956): título vino «Alerta» 78 px y «ACTIVA» 64 px
+   desde y = 166 · botón «Qué hacer ahora» 189 × 92 en y = 631
+   (texto 28 px, interlineado 24) · datos en y = 749.
+   «Entendido» no está en Figma: silencia el sonido y la vibración.
+   ========================================================= */
+
+/* 5 toques seguidos en el logo: sin zoom por doble toque ni selección */
+.inicio__isotipo {
+  touch-action: manipulation;
+  -webkit-user-select: none;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.inicio__titulo--alerta {
+  margin-top: min(166px, 17.4vh);
+  color: var(--vino);
+}
+
+.inicio__titulo-1,
+.inicio__titulo-2 {
+  display: block;
+}
+
+.inicio__titulo-1 {
+  font-size: min(78px, 17.7vw);
+  line-height: 0.992;
+}
+
+.inicio__titulo-2 {
+  font-size: min(64px, 14.5vw);
+  line-height: 0.7025;
+}
+
+.inicio__entendido {
+  position: relative;
+  min-width: 160px;
+  min-height: 48px;
+  margin-top: 28px;
+  padding: 0 28px;
+  border: 2px solid var(--vino);
+  border-radius: 30px;
+  background: transparent;
+  font-family: var(--fuente-texto);
+  font-weight: 700;
+  font-size: 1.125rem;
+  color: var(--vino);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.inicio__entendido:active {
+  background: var(--vino);
+  color: var(--papel);
+}
+
+.inicio__entendido:focus-visible {
+  outline: 3px solid var(--vino);
+  outline-offset: 3px;
+}
+
+.inicio__ahora {
+  position: relative;
+  align-self: center;
+  width: 189px;
+  height: 92px;
+  margin-top: min(86px, 9vh);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--fuente-titulo);
+  font-size: 1.75rem;
+  line-height: 24px;
+  color: var(--blanco);
+  text-align: center;
+  text-decoration: none;
+}
+
+.inicio__fases[hidden],
+.inicio__ahora[hidden] {
+  display: none;
+}
+
+.inicio__ahora img {
+  position: absolute;
+  left: -4px;
+  top: 0;
+  width: 197px;
+  max-width: none;
+  height: 100px;
+}
+
+.inicio__ahora span {
+  position: relative;
+}
+
+.inicio__ahora:focus-visible {
+  outline: 3px solid var(--papel);
+  outline-offset: 2px;
+  border-radius: 0 0 30px 30px;
+}
+
+.inicio--alerta .inicio__datos {
+  margin-top: 26px;
+}
+
+@media (max-height: 760px) {
+  .inicio__titulo--alerta {
+    margin-top: 5vh;
+  }
+  .inicio__entendido {
+    margin-top: 14px;
+  }
+  .inicio__ahora {
+    margin-top: 20px;
+  }
+  .inicio--alerta .inicio__datos {
+    margin-top: 16px;
+  }
+}
